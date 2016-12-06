@@ -26,16 +26,26 @@
         </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><a href="/news/projects">News</a></li>
+            <li><a href="/sports/projects">Sports</a></li>
+            <li><a href="/entertainment/projects">Entertainment</a></li>
+            <li><a href="/projects">All</a></li>
+          <% else %>
             <li><a href="/news">News</a></li>
             <li><a href="/sports">Sports</a></li>
             <li><a href="/entertainment">Entertainment</a></li>
+          <% end %>
         </ul>
       </div>
     </nav>
-    <div class="container-fluid">
-      <div class="row">
-      <h1>Sign up!</h1>
-    <%= bootstrap_form_for(@user) do |f| %>
+    <div class="su">
+  <div class="su-container">
+    <div class="li-form">
+
+    <h1>Sign up!</h1>
+
+    <%= form_for(@user) do |f| %>
       <%= f.text_field :first_name, :placeholder => "First name" %> <br>
       <%= f.text_field :last_name, :placeholder => "Last name" %> <br>
       <%= f.email_field :email, :placeholder => "Email" %> <br>
@@ -43,7 +53,10 @@
       <%= f.hidden_field :role, :value => "user" %>
       <%= f.submit "Create an account", class: "btn-submit" %>
     <% end %>
+
+
     </div>
   </div>
+</div>
   </body>
 </html>
